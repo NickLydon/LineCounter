@@ -14,3 +14,17 @@ C:\Users\nickkell\Documents\Visual Studio 2013\Projects\LineCounter\Source\LineC
 C:\Users\nickkell\Documents\Visual Studio 2013\Projects\LineCounter\Source\LineCounter\bin\Release\FSharp.Core.xml
 C:\Users\nickkell\Documents\Visual Studio 2013\Projects\LineCounter\Source\LineCounter\obj\Release\LineCounter.exe
 C:\Users\nickkell\Documents\Visual Studio 2013\Projects\LineCounter\Source\LineCounter\obj\Release\LineCounter.pdb
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\LineCounter.exe.config
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\LineCounter.XML
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\LineCounter.exe
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\LineCounter.pdb
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\FSharp.Core.dll
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\Lib.dll
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\Lib.pdb
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\Lib.xml
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\FSharp.Core.xml
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\obj\Release\LineCounter.fsprojResolveAssemblyReference.cache
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\obj\Release\LineCounter.exe
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\obj\Release\LineCounter.pdb
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\FSharp.PowerPack.Parallel.Seq.dll
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Release\FSharp.PowerPack.Parallel.Seq.xml
