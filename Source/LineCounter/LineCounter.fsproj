@@ -56,7 +56,6 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="SeqExtension.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
