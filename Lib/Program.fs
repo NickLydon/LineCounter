@@ -11,11 +11,8 @@ let countLines directory searchPatterns =
     searchPatterns
         |> Seq.map (fun pattern -> Directory.EnumerateFiles(directory, pattern, SearchOption.AllDirectories))
         |> Seq.flatten
-        |> Seq.map(fun file -> async {
-            use fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read)
-            let data = Array.create(int fs.Length) 0uy
-            let! _ = fs.AsyncRead(data, 0, data.Length)
-            return data         
+        |> Seq.map(fun file -> async { 
+            use fs = File.OpenRead file in return! fs.AsyncRead(fs.Length |> int) 
         })
         |> Async.Parallel 
         |> Async.RunSynchronously
