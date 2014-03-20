@@ -28,10 +28,9 @@ C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\Line
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\LineCounter.pdb
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\FSharp.Core.dll
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\Lib.dll
-C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\FSharp.PowerPack.Parallel.Seq.dll
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\Lib.pdb
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\Lib.xml
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\FSharp.Core.xml
-C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\bin\Debug\FSharp.PowerPack.Parallel.Seq.xml
+C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\obj\Debug\LineCounter.fsprojResolveAssemblyReference.cache
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\obj\Debug\LineCounter.exe
 C:\Users\nickkell\Documents\GitHub\LineCounter\Source\LineCounter\obj\Debug\LineCounter.pdb
