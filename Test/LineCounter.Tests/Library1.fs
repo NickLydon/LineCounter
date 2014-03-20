@@ -17,6 +17,7 @@ type Class1() =
     member x.``should check all files when not given specific patterns``() = 
         let actual = 
             LineCounter.countLines 
-                (Path.Combine "C:\\Users\\nickkell\\Documents\\GitHub\\LineCounter\\Test\\LineCounter.Tests\\Samples\\Nested")
+                (System.Environment.CurrentDirectory + @"\Samples\Nested")
                 (Seq.singleton "*")
+                Seq.empty
         Assert.AreEqual(3, actual)    
