@@ -10,6 +10,8 @@ module LineCounter =
         | Exclude
         | Skip
     
+    type FilePatterns = { Includes: string list; Excludes: string list; }
+
     let [<Literal>] IncludeKey = "-include"
     let [<Literal>] ExcludeKey  = "-exclude"
     
@@ -31,16 +33,14 @@ module LineCounter =
                     | next -> 
                         match collecting with
                         | Skip -> (acc, collecting)
-                        | Include -> 
-                            let inc, exc = acc
-                            ((next::inc, exc), Include)
+                        | Include ->                             
+                            ({ acc with Includes = next::acc.Includes }, Include)
                         | Exclude -> 
-                            let inc, exc = acc
-                            ((inc, next::exc), Exclude)) 
-                    (([], []), Skip)
+                            ({ acc with Excludes = next::acc.Excludes }, Exclude))
+                    ({ Includes = []; Excludes = []; }, Skip)
             |> fst
                 
-        let lineCounts = countLines directory ((fst splitIncludesAndExcludes) |> List.map(fun p -> "*" + p)) (snd splitIncludesAndExcludes)
+        let lineCounts = countLines directory ((splitIncludesAndExcludes.Includes) |> List.map(fun p -> "*" + p)) (splitIncludesAndExcludes.Excludes)
 
         printfn "Lines: %i" lineCounts
         #if DEBUG
