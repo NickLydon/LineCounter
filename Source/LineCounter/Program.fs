@@ -8,12 +8,14 @@ module LineCounter =
     type CollectionType =
         | Include
         | Exclude
+        | ExcludeDirectory
         | Skip
     
-    type FilePatterns = { Includes: string list; Excludes: string list; }
+    type FilePatterns = { Includes: string list; Excludes: string list; ExcludeDirectories: string list; }
 
-    let [<Literal>] IncludeKey = "-include"
-    let [<Literal>] ExcludeKey  = "-exclude"
+    let [<Literal>] IncludeKey = "--ifile"
+    let [<Literal>] ExcludeKey  = "--efile"
+    let [<Literal>] ExcludeDirectoryKey  = "--edirectory"
     
     [<EntryPoint>]
     let main argv = 
@@ -29,18 +31,26 @@ module LineCounter =
                 Seq.fold(fun (acc,collecting) next -> 
                     match next with
                     | IncludeKey -> (acc, Include)
-                    | ExcludeKey -> (acc, Exclude)                                       
+                    | ExcludeKey -> (acc, Exclude)
+                    | ExcludeDirectoryKey -> (acc, ExcludeDirectory)                                       
                     | next -> 
                         match collecting with
                         | Skip -> (acc, collecting)
                         | Include ->                             
                             ({ acc with Includes = next::acc.Includes }, Include)
                         | Exclude -> 
-                            ({ acc with Excludes = next::acc.Excludes }, Exclude))
-                    ({ Includes = []; Excludes = []; }, Skip)
+                            ({ acc with Excludes = next::acc.Excludes }, Exclude)
+                        | ExcludeDirectory -> 
+                            ({ acc with ExcludeDirectories = next::acc.ExcludeDirectories }, ExcludeDirectory))
+                    ({ Includes = []; Excludes = []; ExcludeDirectories = []; }, Skip)
             |> fst
                 
-        let lineCounts = countLines directory ((splitIncludesAndExcludes.Includes) |> List.map(fun p -> "*" + p)) (splitIncludesAndExcludes.Excludes)
+        let lineCounts = 
+            countLines 
+                directory 
+                (splitIncludesAndExcludes.Includes |> List.map(fun p -> "*" + p))
+                splitIncludesAndExcludes.Excludes
+                splitIncludesAndExcludes.ExcludeDirectories
 
         printfn "Lines: %i" lineCounts
         #if DEBUG
