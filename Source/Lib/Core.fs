@@ -2,6 +2,7 @@
 
 open System.IO
 open Microsoft.FSharp.Collections
+open System.Text
 
 let countLines directory includeFiles excludeFiles excludeDirectories = 
 
@@ -13,13 +14,12 @@ let countLines directory includeFiles excludeFiles excludeDirectories =
         |> Seq.flatten
         |> filter Path.GetDirectoryName excludeDirectories
         |> filter Path.GetExtension excludeFiles
-        |> Seq.map(fun file -> async { 
-            use fs = File.OpenRead file in return! fs.AsyncRead(int fs.Length) 
+        |> Seq.map(fun file -> async {             
+            use fs = File.OpenRead file 
+            let! bytes = fs.AsyncRead(int fs.Length) 
+            let fileContents = Encoding.ASCII.GetString bytes
+            return fileContents.Split([| System.Environment.NewLine |], System.StringSplitOptions.RemoveEmptyEntries).Length
         })
         |> Async.Parallel 
         |> Async.RunSynchronously
-        |> Seq.map System.Text.Encoding.ASCII.GetString
-        |> Seq.map(fun fileContents -> fileContents.Split([| System.Environment.NewLine |], System.StringSplitOptions.RemoveEmptyEntries))
-        |> Seq.flatten
-        |> Seq.length
-    
+        |> Seq.sum

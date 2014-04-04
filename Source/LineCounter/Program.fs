@@ -14,8 +14,8 @@ module LineCounter =
     type FilePatterns = { Includes: string list; Excludes: string list; ExcludeDirectories: string list; }
 
     let [<Literal>] IncludeKey = "--ifile"
-    let [<Literal>] ExcludeKey  = "--efile"
-    let [<Literal>] ExcludeDirectoryKey  = "--edirectory"
+    let [<Literal>] ExcludeKey = "--efile"
+    let [<Literal>] ExcludeDirectoryKey = "--edirectory"
     
     [<EntryPoint>]
     let main argv = 
@@ -44,6 +44,9 @@ module LineCounter =
                             ({ acc with ExcludeDirectories = next::acc.ExcludeDirectories }, ExcludeDirectory))
                     ({ Includes = []; Excludes = []; ExcludeDirectories = []; }, Skip)
             |> fst
+        
+        let sw = Stopwatch()
+        sw.Start()
                 
         let lineCounts = 
             countLines 
@@ -52,7 +55,9 @@ module LineCounter =
                 splitIncludesAndExcludes.Excludes
                 splitIncludesAndExcludes.ExcludeDirectories
 
-        printfn "Lines: %i" lineCounts
+        sw.Stop()
+
+        printfn "Lines: %i; TIme: %i" lineCounts sw.ElapsedMilliseconds
         #if DEBUG
         System.Console.ReadKey() |> ignore
         #endif

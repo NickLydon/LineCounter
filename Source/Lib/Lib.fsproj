@@ -49,6 +49,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Compile Include="pseq.fs" />
     <Compile Include="SeqExtension.fs" />
     <Compile Include="Core.fs" />
     <None Include="app.config" />
